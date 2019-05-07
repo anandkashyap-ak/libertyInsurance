@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, transition, animate, style } from '@angular/animations';
 
-import { IInsuredMember } from '../models/models';
+import { IInsuredMember, Claim } from '../models/models';
 import { LibertyService } from '../liberty.service';
 
 @Component({
@@ -19,7 +19,7 @@ import { LibertyService } from '../liberty.service';
 })
 export class SliderFormComponent implements OnInit {
   insuredMemberArray: IInsuredMember[];
-  memberTypeArray: any[];
+  memberTypeArray: Claim[];
   showScreen: number;
 
   selectedAnswers = [];
