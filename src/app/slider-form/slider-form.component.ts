@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { trigger, transition, animate, style } from '@angular/animations';
 
-import {LibertyService} from '../liberty.service';
+import { IInsuredMember } from '../models/models';
+import { LibertyService } from '../liberty.service';
+
 @Component({
   selector: 'app-slider-form',
   templateUrl: './slider-form.component.html',
@@ -16,7 +18,7 @@ import {LibertyService} from '../liberty.service';
     ]
 })
 export class SliderFormComponent implements OnInit {
-  insuredMemberArray: any[];
+  insuredMemberArray: IInsuredMember[];
   memberTypeArray: any[];
   showScreen: number;
 
@@ -32,11 +34,11 @@ export class SliderFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.liberty.getinsuredMembers() === null) {
+    if (this.liberty.getInsuredMembers() === null) {
       this.router.navigate(['']);
     }
 
-    this.insuredMemberArray = this.liberty.getinsuredMembers();
+    this.insuredMemberArray = this.liberty.getInsuredMembers();
     this.getClaimDetail();
 
     /* Set initial screen */

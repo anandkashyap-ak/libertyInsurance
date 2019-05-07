@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+import { IPolicyInput, PolicyInput, Policy, ClaimDetail } from './models/models';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,41 +25,29 @@ export class LibertyService {
     return JSON.parse(localStorage.getItem('policy'));
   }
 
-  getinsuredMembers() {
+  getInsuredMembers() {
     return JSON.parse(localStorage.getItem('insuredMembers'));
   }
 
-  setinsuredMembers(insuredMembers) {
+  setInsuredMembers(insuredMembers) {
     localStorage.setItem('insuredMembers', JSON.stringify(insuredMembers));
   }
 
-  getPolicyDetails(policy, second = false) {
+  getPolicyDetails(policy: IPolicyInput) {
     const dashboardUrl = this.baseUrl + '/dashboard';
     const headers = new HttpHeaders();
-    const body = {
-      wsVer: '1.0',
-      policyNumber: policy.policyNumber,
-      certNo: policy.certificateNumber,
-      language: 'ENG',
-      identityNumber: policy.passportNumber,
-      dob: '1988-01-01'
-    };
-    if (second) {
-      body.wsVer = '2.0';
-    }
+    const body = new PolicyInput(policy.policyNumber, policy.certNo, policy.identityNumber);
     this.setPolicy(body);
     headers.append('Content-Type', 'application/json');
-    return this.httpClient.post<any>(dashboardUrl, body, {headers: headers});
+    return this.httpClient.post<Policy>(dashboardUrl, body, {headers: headers});
   }
 
   getClaimDetails() {
     const dashboardUrl = this.baseUrl + '/claimdetail';
     const headers = new HttpHeaders();
     const body = this.getPolicy();
-    delete body.wsVer;
-    body.wsVersion = '1.0';
     headers.append('Content-Type', 'application/json');
-    return this.httpClient.post<any>(dashboardUrl, body, {headers: headers});
+    return this.httpClient.post<ClaimDetail>(dashboardUrl, body, {headers: headers});
   }
 
 }
