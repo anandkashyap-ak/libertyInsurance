@@ -30,6 +30,12 @@ export class PolicyValdateComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    if (this.liberty.getPolicy()) {
+      this.liberty.deleteStorageItem('policy');
+    }
+    if (this.liberty.getinsuredMembers()) {
+      this.liberty.deleteStorageItem('insuredMembers');
+    }
   }
 
   isFormValid() {
