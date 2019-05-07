@@ -58,8 +58,6 @@ export class SliderFormComponent implements OnInit {
     /* Set initial screen */
     this.showScreen = this.screenArray[0];
 
-    /* Make copy for auto search */
-    this.doctorNameSearchArray = JSON.parse(JSON.stringify(this.doctorNameArray));
   }
 
   getClaimDetail() {
@@ -80,7 +78,7 @@ export class SliderFormComponent implements OnInit {
     if (this.progressBarPercent >= 100) {
       return 100;
     }
-    const divider = 100 / (this.screenArray.length - 1);
+    const divider = 100 / (this.screenArray.length);
     this.progressBarPercent = Math.floor((this.showScreen - 1) * divider);
     return this.progressBarPercent;
   }
@@ -99,14 +97,6 @@ export class SliderFormComponent implements OnInit {
 
   nextScreen() {
     this.showScreen += 1;
-  }
-
-  checkVal(price) {
-    if (price.length > 0) {
-      this.selectedAnswers[6] = price;
-    } else {
-      delete this.selectedAnswers[6];
-    }
   }
 
 }
