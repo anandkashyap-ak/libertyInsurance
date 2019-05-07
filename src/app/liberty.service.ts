@@ -13,6 +13,23 @@ export class LibertyService {
     private httpClient: HttpClient
   ) { }
 
+  getPolicyDetails(policy: IPolicyInput) {
+    const dashboardUrl = this.baseUrl + '/dashboard';
+    const headers = new HttpHeaders();
+    const body = new PolicyInput(policy.policyNumber, policy.certNo, policy.identityNumber);
+    this.setPolicy(body);
+    headers.append('Content-Type', 'application/json');
+    return this.httpClient.post<Policy>(dashboardUrl, body, {headers: headers});
+  }
+
+  getClaimDetails() {
+    const dashboardUrl = this.baseUrl + '/claimdetail';
+    const headers = new HttpHeaders();
+    const body = this.getPolicy();
+    headers.append('Content-Type', 'application/json');
+    return this.httpClient.post<ClaimDetail>(dashboardUrl, body, {headers: headers});
+  }
+
   deleteStorageItem(keyname: string) {
     localStorage.removeItem(keyname);
   }
@@ -31,23 +48,6 @@ export class LibertyService {
 
   setInsuredMembers(insuredMembers) {
     localStorage.setItem('insuredMembers', JSON.stringify(insuredMembers));
-  }
-
-  getPolicyDetails(policy: IPolicyInput) {
-    const dashboardUrl = this.baseUrl + '/dashboard';
-    const headers = new HttpHeaders();
-    const body = new PolicyInput(policy.policyNumber, policy.certNo, policy.identityNumber);
-    this.setPolicy(body);
-    headers.append('Content-Type', 'application/json');
-    return this.httpClient.post<Policy>(dashboardUrl, body, {headers: headers});
-  }
-
-  getClaimDetails() {
-    const dashboardUrl = this.baseUrl + '/claimdetail';
-    const headers = new HttpHeaders();
-    const body = this.getPolicy();
-    headers.append('Content-Type', 'application/json');
-    return this.httpClient.post<ClaimDetail>(dashboardUrl, body, {headers: headers});
   }
 
 }

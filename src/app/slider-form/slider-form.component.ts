@@ -34,6 +34,7 @@ export class SliderFormComponent implements OnInit {
   }
 
   ngOnInit() {
+    /* Navigate to home if localStorage tem not present */
     if (this.liberty.getInsuredMembers() === null) {
       this.router.navigate(['']);
     }
@@ -46,6 +47,7 @@ export class SliderFormComponent implements OnInit {
 
   }
 
+  /* Call service method getClaimDetails */
   getClaimDetail() {
     this.loading = true;
     this.liberty.getClaimDetails().subscribe(res => {
@@ -58,8 +60,8 @@ export class SliderFormComponent implements OnInit {
     });
   }
 
+  /* Calculate progressbar percent */
   calcProgressBarPercent() {
-    /* Calculate progressbar percent */
     if (this.progressBarPercent >= 100) {
       return 100;
     }
@@ -68,13 +70,10 @@ export class SliderFormComponent implements OnInit {
     return this.progressBarPercent;
   }
 
+  /* Make the current screen selected */
   makeSelected(item: any, screenIndex: number) {
     this.selectedAnswers[screenIndex - 1] = item;
     this.showScreen = this.screenArray[screenIndex];
-  }
-
-  nextScreen() {
-    this.showScreen += 1;
   }
 
 }
