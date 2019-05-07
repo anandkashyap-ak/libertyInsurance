@@ -5,11 +5,11 @@ import {Router} from '@angular/router';
 import {LibertyService} from '../liberty.service';
 
 @Component({
-  selector: 'app-policy-valdate',
-  templateUrl: './policy-valdate.component.html',
-  styleUrls: ['./policy-valdate.component.css']
+  selector: 'app-policy-validate',
+  templateUrl: './policy-validate.component.html',
+  styleUrls: ['./policy-validate.component.css']
 })
-export class PolicyValdateComponent implements OnInit {
+export class PolicyValidateComponent implements OnInit {
   loading = false;
   errText = '';
   policyForm = new FormGroup({

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { PolicyValdateComponent } from './policy-valdate/policy-valdate.component';
+import { PolicyValidateComponent } from './policy-validate/policy-validate.component';
 import { SliderFormComponent } from './slider-form/slider-form.component';
 
 const routes: Routes = [
-  {path: '', component: PolicyValdateComponent},
+  {path: '', component: PolicyValidateComponent},
   {path: 'subscribe', component: SliderFormComponent}
 ];
 

@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
-import { PolicyValdateComponent } from './policy-valdate/policy-valdate.component';
+import { PolicyValidateComponent } from './policy-validate/policy-validate.component';
 import { SliderFormComponent } from './slider-form/slider-form.component';
 import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
 
@@ -16,7 +16,7 @@ import { DatePickerModule } from '@syncfusion/ej2-angular-calendars';
   declarations: [
     AppComponent,
     HeaderComponent,
-    PolicyValdateComponent,
+    PolicyValidateComponent,
     SliderFormComponent
   ],
   imports: [
