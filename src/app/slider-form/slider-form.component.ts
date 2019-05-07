@@ -85,23 +85,6 @@ export class SliderFormComponent implements OnInit {
     return this.progressBarPercent;
   }
 
-  showSearchList() {
-    if (this.searchStr.length > 2) {
-      this.showPopup = true;
-    } else {
-      this.showPopup = false;
-    }
-  }
-
-  showDiagList() {
-    this.docSelected = false;
-    if (this.dSearchStr.length > 2) {
-      this.showDiagPopup = true;
-    } else {
-      this.showDiagPopup = false;
-    }
-  }
-
   makeSelected(item: any, screenIndex: number) {
     this.selectedAnswers[screenIndex - 1] = item;
     this.showScreen = this.screenArray[screenIndex];
@@ -114,45 +97,8 @@ export class SliderFormComponent implements OnInit {
     // this.makeSelected(item, screenIndex);
   }
 
-  removeSpecialChars(str: string) {
-    return str.replace(/[^a-zA-Z ]/g, '').trim();
-  }
-
   nextScreen() {
     this.showScreen += 1;
-  }
-
-  highlightSearch(name: string) {
-    return name.replace(new RegExp(this.searchStr, 'ig'), '<strong>' + this.searchStr + '</strong>');
-  }
-
-  selectDoctor(dname: string) {
-    this.searchStr = dname;
-    this.showPopup = false;
-    this.docSelected = true;
-    this.selectedAnswers[3] = dname;
-  }
-
-  selectDiag(diagname: string) {
-    this.dSearchStr = diagname;
-    this.showDiagPopup = false;
-    this.diagSelected = true;
-    this.selectedAnswers[4] = diagname;
-  }
-
-  makeDiag(item: string, screenIndex: number) {
-    this.dSearchStr = item;
-    this.selectedAnswers[screenIndex - 1] = item;
-  }
-
-  prevDate(calender) {
-    const CurrentDate: Date = new Date();
-    CurrentDate.setDate(CurrentDate.getDate() - 1);
-    calender.value = CurrentDate;
-  }
-
-  consultDate(calenderDate) {
-    this.selectedAnswers[2] = calenderDate.value;
   }
 
   checkVal(price) {
@@ -160,20 +106,6 @@ export class SliderFormComponent implements OnInit {
       this.selectedAnswers[6] = price;
     } else {
       delete this.selectedAnswers[6];
-    }
-  }
-
-  checkIfInvalid() {
-    if (this.showScreen === 3 && !this.selectedAnswers[2]) {
-      return true;
-    } else if (this.showScreen === 4 && (this.selectedAnswers.length < 4 || !this.searchStr)) {
-      return true;
-    } else if (this.showScreen === 5 && (this.selectedAnswers.length < 5 || !this.dSearchStr)) {
-      return true;
-    } else if (this.showScreen === 6 && !this.selectedAnswers[5]) {
-      return true;
-    } else {
-      return false;
     }
   }
 

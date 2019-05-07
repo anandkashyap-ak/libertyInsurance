@@ -13,7 +13,7 @@ export class PolicyValdateComponent implements OnInit {
   loading = false;
   errText = '';
   policyForm = new FormGroup({
-    policyNumber: new FormControl(' ', Validators.required),
+    policyNumber: new FormControl('', Validators.required),
     policyText: new FormControl('', Validators.required),
     certificateNumber: new FormControl('', Validators.required),
     certificateText: new FormControl('', Validators.required),

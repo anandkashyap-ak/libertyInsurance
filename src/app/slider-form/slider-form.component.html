@@ -1,4 +1,3 @@
-<!-- claiming screen html -->
 <div class="container">
   <div class="policy-deatil-card">
     <div class="col-md-6">
@@ -31,7 +30,7 @@
       </div>
       <div class="change-screen col-md-6" [@slideInOut] *ngIf="showScreen == screenArray[1]">
         <div class="title mb-4">
-          <h1>What is your claim type</h1>
+          <h1>What is your claim type?</h1>
           <p>select the option below</p>
         </div>
         <div class="d-md-flex">
@@ -60,8 +59,5 @@
           
       </div>    
     </div>
-    <div *ngIf="showScreen > 2 && showScreen < screenArray.length" class="next-btn-container d-flex justify-content-end">
-        <button class="btn btn-primary" (click)="nextScreen()" [disabled]="checkIfInvalid()" enable>Next</button>
-      </div>
   </div>
 </div>
