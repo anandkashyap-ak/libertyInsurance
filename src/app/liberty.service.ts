@@ -26,6 +26,7 @@ export class LibertyService {
     const dashboardUrl = this.baseUrl + '/claimdetail';
     const headers = new HttpHeaders();
     const body = this.getPolicy();
+    body.wsVersion = '1.0';
     headers.append('Content-Type', 'application/json');
     return this.httpClient.post<ClaimDetail>(dashboardUrl, body, {headers: headers});
   }
