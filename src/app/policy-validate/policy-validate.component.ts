@@ -55,12 +55,9 @@ export class PolicyValidateComponent implements OnInit {
       delete formJson.certificateText;
       this.loading = true;
       this.liberty.getPolicyDetails(this.policyForm.value).subscribe(res => {
-        this.liberty.getPolicyDetails(this.policyForm.value, true).subscribe(resp => {
-          res = res.policyDetail.members.concat(resp.policyDetail.members);
-          this.loading = false;
-          this.liberty.setinsuredMembers(res);
-          this.router.navigate(['/subscribe']);
-        });
+        this.loading = false;
+        this.liberty.setinsuredMembers(res.policyDetail.members);
+        this.router.navigate(['/subscribe']);
       }, err => {
         this.errText = err.error.message;
         this.loading = false;

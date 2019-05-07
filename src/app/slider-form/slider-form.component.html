@@ -36,7 +36,7 @@
         <div class="d-md-flex">
           <div class="d-flex flex-wrap d-max-screen w-100">
             <div class="radio-box" *ngFor="let memberType of memberTypeArray; let i=index">
-              <input type="radio"  name="member-type" (click)="makeClaimSelected(memberType, 2, i)" value="{{memberType.claimTypeDescription}}" [checked]="selectedAnswers.length > 1 && memberType.claimTypeDescription == selectedAnswers[1].claimTypeDescription">
+              <input type="radio"  name="member-type" value="{{memberType.claimTypeDescription}}" [checked]="selectedAnswers.length > 1 && memberType.claimTypeDescription == selectedAnswers[1].claimTypeDescription">
               <label>{{memberType.claimTypeDescription}}</label>
             </div>
           </div>
