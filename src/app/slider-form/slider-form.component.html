@@ -1,0 +1,67 @@
+<!-- claiming screen html -->
+<div class="container">
+  <div class="policy-deatil-card">
+    <div class="col-md-6">
+      <div class="progress-rate mb-3">
+        <p><span>{{calcProgressBarPercent()}}%</span> complete</p>
+        <div class="progress">
+          <div class="progress-bar" [style.width]="calcProgressBarPercent()+'%'"></div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="loading" class="loader-overlay d-flex align-items-center justify-content-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+    </div>
+    <div class="wrap-screen-sidebar d-flex flex-column-reverse flex-md-row">
+      <div class="change-screen col-md-6" [@slideInOut] *ngIf="showScreen == screenArray[0]">
+        <div class="title mb-4">
+          <h1>Who are you claming for?</h1>
+          <p>please select the insured member you are claiming for below</p>
+        </div>
+        <div class="d-md-flex">
+          <div class="d-flex flex-wrap d-max-screen w-100">
+            <div class="radio-box" *ngFor="let insuredMember of insuredMemberArray">
+              <input type="radio" name="insured-member" (click)="makeSelected(insuredMember, 1)" value="{{insuredMember.mmrlnm}}" [checked]="selectedAnswers.length > 0 && insuredMember.mmrlnm == selectedAnswers[0].mmrlnm">
+              <label>{{insuredMember.mmrlnm}}</label>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <div class="change-screen col-md-6" [@slideInOut] *ngIf="showScreen == screenArray[1]">
+        <div class="title mb-4">
+          <h1>What is your claim type</h1>
+          <p>select the option below</p>
+        </div>
+        <div class="d-md-flex">
+          <div class="d-flex flex-wrap d-max-screen w-100">
+            <div class="radio-box" *ngFor="let memberType of memberTypeArray; let i=index">
+              <input type="radio"  name="member-type" (click)="makeClaimSelected(memberType, 2, i)" value="{{memberType.claimTypeDescription}}" [checked]="selectedAnswers.length > 1 && memberType.claimTypeDescription == selectedAnswers[1].claimTypeDescription">
+              <label>{{memberType.claimTypeDescription}}</label>
+            </div>
+          </div>
+        </div>  
+      </div>
+      
+      <div class="col-md-6" [ngClass]="{'display-sidebar' : showScreen > 1 && showScreen < screenArray.length}"> 
+          <div class="d-flex justify-content-around mb-4" *ngIf="showScreen > 1 && selectedAnswers.length > 0">
+              <div class="side-show-text">
+                <div class="icon-before">
+                  <h3>{{selectedAnswers[0].mmrlnm}}</h3><p>you are claiming for</p>
+                </div>
+              </div>
+              <div class="edit-btn"><button class="btn" (click)="showScreen = screenArray[0]">Edit</button></div>
+          </div>
+          <div class="d-flex justify-content-around mb-4" *ngIf="showScreen > 2 && selectedAnswers.length > 1">
+                <div class="side-show-text"><div class="icon-before"><h3>{{selectedAnswers[1].claimTypeDescription}}</h3><p>your claim type</p></div></div>
+                <div class="edit-btn"><button class="btn" (click)="showScreen = screenArray[1]">Edit</button></div>
+          </div>
+          
+      </div>    
+    </div>
+    <div *ngIf="showScreen > 2 && showScreen < screenArray.length" class="next-btn-container d-flex justify-content-end">
+        <button class="btn btn-primary" (click)="nextScreen()" [disabled]="checkIfInvalid()" enable>Next</button>
+      </div>
+  </div>
+</div>
