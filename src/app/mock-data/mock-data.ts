@@ -43,4 +43,5 @@ export const diagnosisNameArray: IDiagnosis[] = [
     {name: 'Upper 3', id: 4},
     {name: 'Upper 4', id: 5},
     {name: 'Upper 5', id: 6}
-]
+];
+
