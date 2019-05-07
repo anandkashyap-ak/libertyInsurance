@@ -1,6 +1,6 @@
 <div class="container">
   <div class="policy-deatil-card">
-      <div class="col-12 mb-4">
+      <div class="col-12 mb-4 mt-4">
         <div class="title">
             <h1>Enter Policy Details</h1>
             <p>Please provide your details for validation </p>
@@ -11,26 +11,26 @@
           <div class="col-md-8">    
               <div class="form-group">
                   <label for="policy">Policy Number<span class="text-danger">*</span></label>
-                  <div class="d-md-flex">
-                      <div class="flex-md-grow-1 lg-input-wd mb-2"><input required type="text" formControlName="policyNumber" class="form-control" id="policy"></div>
-                      <div class="sm-input-wd mb-2"><input type="text" formControlName="policyText" class="form-control" id="pp"></div>
-                      <div class="tooltip-icon mb-2"><span class="tooltiptext">Please refer to your Group Medical / Member card</span><img src="../../assets/images/info-icon.png"></div>
+                  <div class="d-block">
+                      <div class="d-inline-block lg-input-wd mb-2"><input required type="text" formControlName="policyNumber" class="form-control" id="policy"></div>
+                      <div class="d-inline-block sm-input-wd mb-2"><input type="text" formControlName="policyText" class="form-control" id="pp"></div>
+                      <div class="d-inline-block tooltip-icon mb-2"><span class="tooltiptext">Please refer to your Group Medical / Member card</span><img src="../../assets/images/info-icon.png"></div>
                   </div>
                   <p class="text-danger form-error" *ngIf="(policyForm.controls['policyNumber'].dirty && policyForm.controls['policyText'].dirty) &&(policyForm.controls['policyNumber'].invalid || policyForm.controls['policyText'].invalid)">{{policyFormValidationMessages.policyNumber}}</p>
                 </div>
                 <div class="form-group">
                   <label for="cerificate">Certificate Number<span class="text-danger">*</span></label>
-                  <div class="d-md-flex">
-                      <div class="flex-md-grow-1 lg-input-wd mb-2"><input required type="text" formControlName="certificateNumber" class="form-control" id="certificate"></div>
-                      <div class="sm-input-wd mb-2"><input type="text" formControlName="certificateText" class="form-control" id="pc"></div>
+                  <div class="d-block">
+                      <div class="d-inline-block lg-input-wd mb-2"><input required type="text" formControlName="certificateNumber" class="form-control" id="certificate"></div>
+                      <div class="d-inline-block sm-input-wd mb-2"><input type="text" formControlName="certificateText" class="form-control" id="pc"></div>
                   </div>
                   <p class="text-danger form-error" *ngIf="(policyForm.controls['certificateNumber'].dirty && policyForm.controls['certificateText'].dirty) &&(policyForm.controls['certificateNumber'].invalid || policyForm.controls['certificateText'].invalid)">{{policyFormValidationMessages.certificateNumber}}</p>
                 </div>
                 <div class="form-group">
                     <label for="passport">HK ID/ Passport No<span class="text-danger">*</span></label>
-                    <div class="d-md-flex">
-                      <div class="lg-input-wd mb-2"><input required type="text" formControlName="passportNumber" class="form-control" id="passport"></div>
-                      <div class="tooltip-icon mb-2"><span class="tooltiptext t-position"><p>e.g. Hong Kong ID:A123456(7)   Input: A12345</p>
+                    <div class="d-block">
+                      <div class="d-inline-block lg-input-wd mb-2"><input required type="text" formControlName="passportNumber" class="form-control" id="passport"></div>
+                      <div class="d-inline-block tooltip-icon mb-2"><span class="tooltiptext t-position"><p>e.g. Hong Kong ID:A123456(7)   Input: A12345</p>
                           <p>e.g. Password No: AB123456     Input: AB1234</p></span><img src="../../assets/images/info-icon.png"></div>
                     </div>
                     <p class="text-danger form-error" *ngIf="policyForm.controls['passportNumber'].dirty && policyForm.controls['passportNumber'].invalid">{{policyFormValidationMessages.passportNumber}}</p>
